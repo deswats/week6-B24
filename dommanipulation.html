@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Dom manipulation</title>
+</head>
+<body>
+	<h2>DOM Manipulation</h2>
+	<input type="text" id="username" placeholder="Enter Name">
+	<button onClick="buttonClicked()" id="primary">Click Me</button>
+	<button onClick="activatePressed()" id="secondary">Activate The Button</button>
+	<p id = "message"></p>
+
+
+	<hr>
+<h2>What items will you donate?</h2>
+<input type="text" id="itemname" placeholder="Item to be added">
+<button onClick="addPressed()">Add New Item</button>
+<ul id="mylist">
+</ul>
+
+
+<hr>
+<h2>What you plan to buy?</h2>
+<input type="text" id="itemlist" placeholder="Item to buy">
+<input type="number" id="quantity" placeholder="Insert Quantities">
+<button onClick="buttonPressed()">Add your items</button>
+<table>
+	<thead>
+		<th>Items</th>
+		<th>Quantity</th>
+	</thead>
+	<tbody id="myItemPlan">
+	</tbody >
+</table>
+
+<script type="text/javascript">
+
+function buttonPressed(){
+
+//0 retrieve user input
+
+var planItem = document.getElementById("itemlist").value;
+var itemQuantity =document.getElementById("quantity").value;
+
+//1 create a new 2 td's
+
+var td1 =document.createElement("td");
+var td2 =document.createElement("td");
+
+//2 set the innerHTMLof both td with planItem and itemQuantity
+td1.innerHTML = planItem;
+td2.innerHTML = itemQuantity;
+
+//Create new tr
+var newTr = document.createElement("tr");
+
+//Add the 2 td's to the new tr
+newTr.appendChild(td1);
+newTr.appendChild(td2);
+
+//add the tr to the tbody
+document.getElementById("myItemPlan").appendChild(newTr);
+}
+
+
+function addPressed(){
+
+	//0 retrieve user input
+	var newItem = document.getElementById("itemname").value;
+
+	//1 create a new pair of li
+	var newLi = document.createElement("li");
+
+	//2 set the innerHTML to the new li to retrieve items from input
+	newLi.innerHTML = newItem;
+
+	//Add new button(new) dynamically inside the li 
+	var newButton = document.createElement("button");
+	newButton.innerHTML = "Delete";
+	newButton.addEventListener("click", function(){
+	//when button is click, it will remove the newLi from the item list
+		document.getElementById("mylist").removeChild(newLi)
+	})
+	newLi.appendChild(newButton);
+
+	//3 Add the new newLi to myList ul	
+	document.getElementById("mylist").appendChild(newLi);
+	}
+
+	//to remove value in imput after typing/adding it
+	document.getElementById("itemname").value = "";
+
+
+
+
+	function buttonClicked(){
+		var name = document.getElementById("username").value;
+			alert("Hello "+name);// alert Hello+name
+			document.getElementById("message").innerHTML = "Hello "+name;}	
+
+function activatePressed(){
+	//if button is not activate
+	if (!document.getElementById("primary").disabled){
+			// I am going to deactivate it...
+			document.getElementById("primary").setAttribute("disabled",true);
+			document.getElementById("secondary").innerHTML = "Activate the button";
+		}
+		else {
+			// If not.. Im going to activate it...
+			document.getElementById("primary").removeAttribute("disabled");
+			document.getElementById("secondary").innerHTML = "Deactivate the button";
+		}
+	}
+
+
+
+
+
+</script>
+
+
+
+
+</body>
+</html>

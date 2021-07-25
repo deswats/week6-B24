@@ -17,10 +17,8 @@
 	background-size:  100%;
 }
 
-
-
 </style>
-<div class="container text-center text-white jumbotron">
+<div class=" container text-center text-white jumbotron">
 <h2>Welcome to Guess a Number Game</h2>
 
 <input type="text" name="username" id="username"placeholder="Input your name here">
@@ -29,41 +27,47 @@
 <h4>In this game you can choose a number from 1 - 100</h4>
 <h4>Each time when you choose number, if you didn't choose it correctly</h4>
 <h4>The computer will tell you whether your number is higher or Lower.</h4>
-<h4>This process is repeated until you get the number correct.</h4>
+<h4>You can only guess the number <strong>5 times</strong></h4>
 <h4>Good Luck!</h4>
 <hr>
 	<input type="text" name="number" id="usenumber" placeholder="Guess a number here">
 	<button onClick="userGuess()">Good Luck!</button>
-	<h3 id="outPut" py-5 my-5></h3>	
+	<h3 id="outPut" py-5 my-5></h3>
+	<h3 class="trials"></h3>	
 </div>
 
 <script type="text/javascript">
+	var numGuess = 0;
 
-function sayHello(){
-	var name = document.getElementById("username").value; 
-			document.getElementById("message").innerHTML = "Hello "+name;
-		}	
+	function sayHello(){
+		var name = document.getElementById("username").value; 
+		document.getElementById("message").innerHTML = "Hello "+name;
+	}	
 
-var random=[Math.floor(Math.random()*100)];
+var random =(Math.floor(Math.random() * 100));
 
+	function userGuess(){
+		
+		var number=document.getElementById("usenumber").value
 
-
-function userGuess(){
-var number=document.getElementById("usenumber").value
-	if (random == number){
-		document.getElementById("outPut").innerHTML = "Congratulation, you have guessed Correctly!"
+		if (random == number){
+			
+			document.getElementById("outPut").innerHTML = "Congratulation, you have guessed Correctly!"
+		}
+		else if (random > number){
+			numGuess ++;
+			document.getElementById("outPut").innerHTML = "Sorry, you have guessed a lower number. Try again!"
+			alert ("You have guess " +numGuess+ " time.")
+		}
+		else {
+			numGuess ++;
+			document.getElementById("outPut").innerHTML = "Sorry, you have guessed a higher number. Try again!"
+			alert ("You have guess " +numGuess+ " time.")
+		}
+		if (numberGuess == 6){
+		alert("You have exceeded your number of tries, please refresh")
 	}
-	else if (random > number){
-		document.getElementById("outPut").innerHTML = "Sorry, you have guessed a lower number. Try again!"
 	}
-	else if (random < number){ 
-		document.getElementById("outPut").innerHTML = "Sorry, you have guessed a higher number. Try again!"}
-}
-
-
-
-
-
 
 </script>
 
