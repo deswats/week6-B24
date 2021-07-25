@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Guess A number Project</title>
+  </head>
+  <body>
+  	<style type="text/css">
+.jumbotron{
+	background-color: rgb(146, 201, 28);
+	background-size:  100%;
+}
+
+
+
+</style>
+<div class="container text-center text-white jumbotron">
+<h2>Welcome to Guess a Number Game</h2>
+
+<input type="text" name="username" id="username"placeholder="Input your name here">
+<button onClick="sayHello()">Click Me!</button>
+<h3 id = "message" class="py-3 my-3"></h3>	
+<h4>In this game you can choose a number from 1 - 100</h4>
+<h4>Each time when you choose number, if you didn't choose it correctly</h4>
+<h4>The computer will tell you whether your number is higher or Lower.</h4>
+<h4>This process is repeated until you get the number correct.</h4>
+<h4>Good Luck!</h4>
+<hr>
+	<input type="text" name="number" id="usenumber" placeholder="Guess a number here">
+	<button onClick="userGuess()">Good Luck!</button>
+	<h3 id="outPut" py-5 my-5></h3>	
+</div>
+
+<script type="text/javascript">
+
+function sayHello(){
+	var name = document.getElementById("username").value; 
+			document.getElementById("message").innerHTML = "Hello "+name;
+		}	
+
+var random=[Math.floor(Math.random()*100)];
+
+
+
+function userGuess(){
+var number=document.getElementById("usenumber").value
+	if (random == number){
+		document.getElementById("outPut").innerHTML = "Congratulation, you have guessed Correctly!"
+	}
+	else if (random > number){
+		document.getElementById("outPut").innerHTML = "Sorry, you have guessed a lower number. Try again!"
+	}
+	else if (random < number){ 
+		document.getElementById("outPut").innerHTML = "Sorry, you have guessed a higher number. Try again!"}
+}
+
+
+
+
+
+
+</script>
+
+
+
+
+
+<!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>
